@@ -4,6 +4,7 @@ import { mainnet, polygon, optimism, arbitrum } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 import '../styles/globals.css';
 import '@rainbow-me/rainbowkit/styles.css';
+import dynamic from 'next/dynamic';
 
 const { chains, provider } = configureChains(
   [mainnet, polygon, optimism, arbitrum],
@@ -31,4 +32,4 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-export default MyApp;
+export default dynamic(() => Promise.resolve(MyApp), { ssr: false });
